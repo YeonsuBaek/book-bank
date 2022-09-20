@@ -1,0 +1,57 @@
+/*
+ * DESKTOP (>=1200px) -------------------------------------
+ * # of columns                 8
+ * gutter                       16px
+ * unit                         72px
+ * margin                       auto
+ * container-size               704px
+ * max-container-size           704px
+*/
+
+.container {
+  width: 100%;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 704px;
+}
+
+.container .row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+[class^="col-"] {
+  padding: 0 8px;
+}
+
+.col-1 {
+  width: 72px;
+}
+
+.col-2 {
+  width: 160px;
+}
+
+.col-3 {
+  width: 248px;
+}
+
+.col-4 {
+  width: 336px;
+}
+
+.col-5 {
+  width: 424px;
+}
+
+.col-6 {
+  width: 512px;
+}
+
+.col-7 {
+  width: 600px;
+}
+
+.col-8 {
+  width: 688px;
+}
