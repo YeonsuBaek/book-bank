@@ -8,19 +8,19 @@
             <strong>100,000원</strong>
           </div>
 
-          <div class="booklist-header">
-            <span class="book-num">No.</span>
-            <span class="book-title">제목</span>
-            <span class="book-category">분야</span>
-            <span class="book-price">가격</span>
+          <div class="booklistHeader">
+            <span class="bookNumber">No.</span>
+            <span class="bookTitle">제목</span>
+            <span class="bookCategory">분야</span>
+            <span class="bookPrice">가격</span>
           </div>
 
-          <ul class="booklist-list">
-            <li class="booklist-item">
-              <span class="book-num">1</span>
-              <span class="book-title">Operating System Concepts</span>
-              <span class="book-category">IT/컴퓨터</span>
-              <span class="book-price">45,000원</span>
+          <ul class="booklistList">
+            <li class="booklistItem">
+              <span class="bookNumber">1</span>
+              <span class="bookTitle">Operating System Concepts</span>
+              <span class="bookCategory">IT/컴퓨터</span>
+              <span class="bookPrice">45,000원</span>
             </li>
           </ul>
         </div>
@@ -34,40 +34,40 @@ export default {};
 </script>
 
 <style scoped>
-.booklist-header,
-.booklist-item {
+.booklistHeader,
+.booklistItem {
   display: flex;
   align-items: center;
   gap: 16px;
   height: 40px;
 }
 
-.booklist-header {
+.booklistHeader {
   color: #969a9e;
   border-bottom: 1px solid #d7dde3;
 }
 
-.booklist-item span {
+.booklistItem span {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
 
-.book-num {
+.bookNumber {
   width: 72px;
   text-align: center;
 }
 
-.book-category {
+.bookCategory {
   width: 160px;
   text-align: center;
 }
 
-.book-title {
+.bookTitle {
   width: 248px;
 }
 
-.book-price {
+.bookPrice {
   width: 160px;
   padding-right: 10px;
   text-align: right;
