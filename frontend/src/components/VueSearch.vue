@@ -3,7 +3,9 @@
     <div class="container">
       <div class="row">
         <div class="col-8">
-          <h2 class="subTitle">읽은 책을 검색해주세요</h2>
+          <div class="subTitle">
+            <h2>읽은 책을 검색해주세요</h2>
+          </div>
 
           <form class="searchForm">
             <input
