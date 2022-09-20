@@ -1,7 +1,7 @@
 <template>
   <header class="globalHeader">
     <h1 class="title">Book Bank</h1>
-    <button class="sharingButton" type="button">공유하기</button>
+    <button class="blueButton sharingButton" type="button">공유하기</button>
   </header>
 </template>
 
@@ -27,18 +27,5 @@ export default {};
   color: #2d2e2f;
   font-size: 24px;
   font-family: "Roboto", sans-serif;
-}
-
-.sharingButton {
-  padding: 0 16px;
-  height: 36px;
-  color: #fff;
-  font-size: 16px;
-  background-color: #0085f9;
-  border-radius: 4px;
-}
-
-.sharingButton:is(:hover, :active) {
-  background-color: #006ac7;
 }
 </style>
