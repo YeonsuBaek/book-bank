@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-8">
           <div class="subTitle">
-            <h2>읽은 책을 검색해주세요</h2>
+            <h2>읽은 책을 추가해주세요</h2>
           </div>
 
           <form class="searchForm">
@@ -14,7 +14,7 @@
               placeholder="도서명이나 바코드 번호를 입력해주세요"
             />
 
-            <button class="blueButton searchButton" type="button">검색</button>
+            <button class="blueButton searchButton" type="button">추가</button>
           </form>
         </div>
       </div>
