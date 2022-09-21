@@ -12,9 +12,20 @@
               class="searchInput"
               type="text"
               placeholder="도서명이나 바코드 번호를 입력해주세요"
+              list="bookDataList"
             />
 
-            <button class="blueButton searchButton" type="button">추가</button>
+            <datalist class="searchDataList" id="bookDataList">
+              <option value="기록의 쓸모" />
+            </datalist>
+
+            <button
+              class="blueButton searchButton"
+              type="button"
+              @click="getBookList"
+            >
+              추가
+            </button>
           </form>
         </div>
       </div>
