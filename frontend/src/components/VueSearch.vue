@@ -32,6 +32,10 @@
               추가
             </button>
           </form>
+
+          <div class="searchErrorToast" :class="{ isActive: searchError }">
+            <strong>해당 도서가 존재하지 않습니다</strong>
+          </div>
         </div>
       </div>
     </div>
@@ -47,13 +51,22 @@ export default {
   data() {
     return {
       bookTitle: "",
+      searchError: false,
     };
   },
 
   methods: {
     submitBook() {
-      this.$emit("addBook", this.bookTitle);
-      this.bookTitle = "";
+      if (
+        this.bookTitle === "" ||
+        !this.booklist.some((book) => book.title === this.bookTitle)
+      ) {
+        this.searchError = true;
+      } else {
+        this.searchError = false;
+        this.$emit("addBook", this.bookTitle);
+        this.bookTitle = "";
+      }
     },
   },
 };
@@ -81,5 +94,15 @@ export default {
 
 .searchButton {
   flex-shrink: 0;
+}
+
+.searchErrorToast {
+  display: none;
+}
+
+.searchErrorToast.isActive {
+  display: block;
+  padding: 8px;
+  color: #ff3859;
 }
 </style>
