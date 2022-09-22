@@ -1,7 +1,7 @@
 <template>
   <div>
     <VueSearch :booklist="booklist" @addBook="getBook" />
-    <VueList />
+    <VueList :myBooks="myBooks" />
   </div>
 </template>
 
@@ -9,6 +9,7 @@
 import VueSearch from "./VueSearch.vue";
 import VueList from "./VueList.vue";
 import Datalist from "@/assets/booklist.json";
+import { ref } from "vue";
 
 const booklist = Datalist;
 
@@ -21,10 +22,24 @@ export default {
     };
   },
 
-  methods: {
-    getBook(bookTitle) {
-      console.log(bookTitle);
-    },
+  setup() {
+    const myBooks = ref([]);
+
+    const getBook = (bookTitle) => {
+      const bookIndex = booklist.findIndex((v) => v.title === bookTitle);
+
+      myBooks.value.push({
+        index: bookIndex,
+        title: booklist[bookIndex].title,
+        category: booklist[bookIndex].category,
+        price: booklist[bookIndex].price,
+      });
+    };
+
+    return {
+      myBooks,
+      getBook,
+    };
   },
 };
 </script>

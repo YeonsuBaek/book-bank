@@ -16,11 +16,15 @@
           </div>
 
           <ul class="booklistList">
-            <li class="booklistItem">
+            <li
+              class="booklistItem"
+              v-for="myBook in myBooks"
+              :key="myBook.index"
+            >
               <span class="bookNumber">1</span>
-              <span class="bookTitle">Operating System Concepts</span>
-              <span class="bookCategory">IT/컴퓨터</span>
-              <span class="bookPrice">45,000원</span>
+              <span class="bookTitle">{{ myBook.title }}</span>
+              <span class="bookCategory">{{ myBook.category }}</span>
+              <span class="bookPrice">{{ myBook.price }}</span>
             </li>
           </ul>
         </div>
@@ -30,7 +34,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    myBooks: Array,
+  },
+};
 </script>
 
 <style scoped>
