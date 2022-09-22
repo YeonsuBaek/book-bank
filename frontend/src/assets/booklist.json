@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Operating System Concepts",
+    "category": "자연/과학",
+    "price": "46,000",
+    "IBSN": 9781119586166
+  },
+  {
+    "title": "트로피컬 나이트",
+    "category": "소설",
+    "price": "13,500",
+    "IBSN": 9791160408331
+  },
+  {
+    "title": "열한 계단",
+    "category": "교양철학",
+    "price": "17000",
+    "IBSN": 9791195677153
+  }
+]

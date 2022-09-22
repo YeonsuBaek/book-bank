@@ -1,6 +1,6 @@
 <template>
   <div>
-    <VueSearch />
+    <VueSearch :booklist="booklist" />
     <VueList />
   </div>
 </template>
@@ -8,8 +8,17 @@
 <script>
 import VueSearch from "./VueSearch.vue";
 import VueList from "./VueList.vue";
+import Datalist from "@/assets/booklist.json";
+
+const booklist = Datalist;
+
 export default {
   components: { VueSearch, VueList },
+  data() {
+    return {
+      booklist,
+    };
+  },
 };
 </script>
 

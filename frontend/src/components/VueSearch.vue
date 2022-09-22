@@ -16,7 +16,11 @@
             />
 
             <datalist class="searchDataList" id="bookDataList">
-              <option value="기록의 쓸모" />
+              <option
+                v-for="book in booklist"
+                :key="book"
+                :value="book.title"
+              />
             </datalist>
 
             <button
@@ -34,7 +38,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    booklist: Array,
+  },
+};
 </script>
 
 <style scoped>
