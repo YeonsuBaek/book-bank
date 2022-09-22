@@ -7,12 +7,13 @@
             <h2>읽은 책을 추가해주세요</h2>
           </div>
 
-          <form class="searchForm">
+          <form class="searchForm" @submit.prevent="onSubmit">
             <input
               class="searchInput"
               type="text"
               placeholder="도서명이나 바코드 번호를 입력해주세요"
               list="bookDataList"
+              v-model="bookTitle"
             />
 
             <datalist class="searchDataList" id="bookDataList">
@@ -25,8 +26,8 @@
 
             <button
               class="blueButton searchButton"
-              type="button"
-              @click="getBookList"
+              type="submit"
+              @click="submitBook"
             >
               추가
             </button>
@@ -41,6 +42,18 @@
 export default {
   props: {
     booklist: Array,
+  },
+
+  data() {
+    return {
+      bookTitle: "",
+    };
+  },
+
+  methods: {
+    submitBook() {
+      this.$emit("addBook", this.bookTitle);
+    },
   },
 };
 </script>

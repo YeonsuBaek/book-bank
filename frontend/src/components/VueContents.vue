@@ -1,6 +1,6 @@
 <template>
   <div>
-    <VueSearch :booklist="booklist" />
+    <VueSearch :booklist="booklist" @addBook="getBook" />
     <VueList />
   </div>
 </template>
@@ -14,10 +14,17 @@ const booklist = Datalist;
 
 export default {
   components: { VueSearch, VueList },
+
   data() {
     return {
       booklist,
     };
+  },
+
+  methods: {
+    getBook(bookTitle) {
+      console.log(bookTitle);
+    },
   },
 };
 </script>
