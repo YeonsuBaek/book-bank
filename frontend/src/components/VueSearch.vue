@@ -53,6 +53,7 @@ export default {
   methods: {
     submitBook() {
       this.$emit("addBook", this.bookTitle);
+      this.bookTitle = "";
     },
   },
 };
