@@ -1,7 +1,7 @@
 <template>
   <div>
     <VueSearch :booklist="booklist" @addBook="getBook" />
-    <VueList :myBooks="myBooks" />
+    <VueList :myBooks="myBooks" @deleteBook="popSelectedBook" />
   </div>
 </template>
 
@@ -27,7 +27,6 @@ export default {
 
     const getBook = (bookTitle) => {
       const bookIndex = booklist.findIndex((v) => v.title === bookTitle);
-
       myBooks.value.push({
         index: bookIndex,
         title: booklist[bookIndex].title,
@@ -36,9 +35,14 @@ export default {
       });
     };
 
+    const popSelectedBook = (index) => {
+      myBooks.value.splice(index, 1);
+    };
+
     return {
       myBooks,
       getBook,
+      popSelectedBook,
     };
   },
 };

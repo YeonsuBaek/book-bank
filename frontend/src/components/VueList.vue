@@ -21,12 +21,33 @@
               v-for="(myBook, index) in myBooks"
               :key="myBook.index"
             >
-              <span class="bookNumber">{{ index + 1 }}</span>
+              <span class="bookNumber">
+                <div :class="{ hidden: numberHidden }">
+                  {{ index + 1 }}
+                </div>
+                <button
+                  class="deleteBookButton"
+                  :class="{ hidden: checkboxHidden }"
+                  type="button"
+                  @click="deleteBookItem(index)"
+                >
+                  ❌
+                </button>
+              </span>
               <span class="bookTitle">{{ myBook.title }}</span>
               <span class="bookCategory">{{ myBook.category }}</span>
               <span class="bookPrice">{{ myBook.price }}</span>
             </li>
           </ul>
+
+          <button
+            class="deleteButton redButton"
+            :class="{ hidden: buttonHidden }"
+            type="button"
+            @click="readyToDelete"
+          >
+            {{ deleteButton }}
+          </button>
         </div>
       </div>
     </div>
@@ -42,7 +63,42 @@ export default {
   data() {
     return {
       totalPrice: 0,
+      deleteButton: "삭제",
+      buttonHidden: true,
+      checkboxHidden: true,
+      numberHidden: false,
     };
+  },
+
+  methods: {
+    showDeleteButton() {
+      if (this.myBooks.length !== 0) {
+        this.buttonHidden = false;
+      }
+    },
+
+    readyToDelete() {
+      if (this.deleteButton === "취소") {
+        this.numberHidden = false;
+        this.checkboxHidden = true;
+        this.deleteButton = "삭제";
+      } else {
+        this.numberHidden = true;
+        this.checkboxHidden = false;
+        this.deleteButton = "취소";
+      }
+    },
+
+    deleteBookItem(index) {
+      this.$emit("deleteBook", index);
+
+      if (this.myBooks.length === 0) {
+        this.numberHidden = false;
+        this.checkboxHidden = true;
+        this.deleteButton = "삭제";
+        this.buttonHidden = true;
+      }
+    },
   },
 
   computed: {
@@ -59,6 +115,8 @@ export default {
           .toString()
           .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       }
+
+      this.showDeleteButton();
 
       return totalPrice;
     },
@@ -80,6 +138,10 @@ export default {
   border-bottom: 1px solid #d7dde3;
 }
 
+.booklistList {
+  margin-bottom: 16px;
+}
+
 .booklistItem span {
   text-overflow: ellipsis;
   overflow: hidden;
@@ -89,6 +151,10 @@ export default {
 .bookNumber {
   width: 72px;
   text-align: center;
+}
+
+.bookNumber .hidden {
+  display: none;
 }
 
 .bookCategory {
@@ -104,5 +170,24 @@ export default {
   width: 160px;
   padding-right: 10px;
   text-align: right;
+}
+
+.deleteButton.hidden {
+  display: none;
+}
+
+.deleteButton {
+  display: block;
+  margin: 0 auto;
+}
+
+.deleteBookButton.hidden {
+  display: none;
+}
+
+.deleteBookButton {
+  display: block;
+  margin: 0 auto;
+  color: #ff3859;
 }
 </style>
