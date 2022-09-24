@@ -9,7 +9,17 @@
           </div>
 
           <div class="booklistHeader">
-            <span class="bookNumber">No.</span>
+            <span class="bookNumber">
+              <div :class="{ hidden: numberHidden }">No.</div>
+              <button
+                class="deleteBookButton"
+                :class="{ hidden: checkboxHidden }"
+                type="button"
+                @click="deleteBooksAll()"
+              >
+                ❌
+              </button>
+            </span>
             <span class="bookTitle">제목</span>
             <span class="bookAuthor">작가</span>
             <span class="bookPrice">가격</span>
@@ -93,11 +103,15 @@ export default {
       this.$emit("deleteBook", index);
 
       if (this.myBooks.length === 0) {
-        this.numberHidden = false;
-        this.checkboxHidden = true;
-        this.deleteButton = "삭제";
+        this.readyToDelete();
         this.buttonHidden = true;
       }
+    },
+
+    deleteBooksAll() {
+      this.$emit("deleteBookAll");
+      this.readyToDelete();
+      this.buttonHidden = true;
     },
   },
 

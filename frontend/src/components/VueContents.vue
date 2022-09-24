@@ -1,7 +1,11 @@
 <template>
   <div>
     <VueSearch :bookListNaver="bookListNaver" @addBook="getBook" />
-    <VueList :myBooks="myBooks" @deleteBook="popSelectedBook" />
+    <VueList
+      :myBooks="myBooks"
+      @deleteBook="popSelectedBook"
+      @deleteBookAll="popAllBook"
+    />
     <button type="button" @click="getBookList">버튼</button>
   </div>
 </template>
@@ -64,6 +68,10 @@ export default {
 
     popSelectedBook(index) {
       this.myBooks.splice(index, 1);
+    },
+
+    popAllBook() {
+      this.myBooks = [];
     },
   },
 };
