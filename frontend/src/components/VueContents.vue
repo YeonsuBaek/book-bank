@@ -1,49 +1,70 @@
 <template>
   <div>
-    <VueSearch :booklist="booklist" @addBook="getBook" />
+    <VueSearch :bookListNaver="bookListNaver" @addBook="getBook" />
     <VueList :myBooks="myBooks" @deleteBook="popSelectedBook" />
+    <button type="button" @click="getBookList">버튼</button>
   </div>
 </template>
 
 <script>
 import VueSearch from "./VueSearch.vue";
 import VueList from "./VueList.vue";
-import Datalist from "@/assets/booklist.json";
 import { ref } from "vue";
-
-const booklist = Datalist;
+import axios from "axios";
 
 export default {
   components: { VueSearch, VueList },
 
   data() {
     return {
-      booklist,
+      bookListNaver: [],
+      myBooks: ref([]),
     };
   },
 
-  setup() {
-    const myBooks = ref([]);
+  mounted() {
+    this.getBookList();
+  },
 
-    const getBook = (bookTitle) => {
-      const bookIndex = booklist.findIndex((v) => v.title === bookTitle);
-      myBooks.value.push({
+  methods: {
+    getBookList() {
+      const URL =
+        "/v1/search/book_adv.json?sort=date&d_titl=%EC%A3%BC%EC%8B%9D&display=100&start=1";
+      const clientId = "zgbEsWEnyJr6pCA8UVpd";
+      const clientSecret = "OLVRRFKjNd";
+
+      axios
+        .get(URL, {
+          headers: {
+            Accept: "application/json",
+            "X-Naver-Client-Id": clientId,
+            "X-Naver-Client-Secret": clientSecret,
+          },
+        })
+        .then((response) => {
+          let test = [];
+          test = test.concat(response.data.items);
+          this.bookListNaver = this.bookListNaver.concat(test);
+        });
+    },
+
+    getBook(bookTitle) {
+      const bookIndex = this.bookListNaver.findIndex(
+        (v) => v.title === bookTitle
+      );
+      this.myBooks.push({
         index: bookIndex,
-        title: booklist[bookIndex].title,
-        category: booklist[bookIndex].category,
-        price: booklist[bookIndex].price,
+        title: this.bookListNaver[bookIndex].title,
+        author: this.bookListNaver[bookIndex].author,
+        price: this.bookListNaver[bookIndex].discount
+          .toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ","),
       });
-    };
+    },
 
-    const popSelectedBook = (index) => {
-      myBooks.value.splice(index, 1);
-    };
-
-    return {
-      myBooks,
-      getBook,
-      popSelectedBook,
-    };
+    popSelectedBook(index) {
+      this.myBooks.value.splice(index, 1);
+    },
   },
 };
 </script>

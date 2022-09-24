@@ -18,7 +18,7 @@
 
             <datalist class="searchDataList" id="bookDataList">
               <option
-                v-for="book in booklist"
+                v-for="book in bookListNaver"
                 :key="book"
                 :value="book.title"
               />
@@ -45,7 +45,7 @@
 <script>
 export default {
   props: {
-    booklist: Array,
+    bookListNaver: Array,
   },
 
   data() {
@@ -59,7 +59,7 @@ export default {
     submitBook() {
       if (
         this.bookTitle === "" ||
-        !this.booklist.some((book) => book.title === this.bookTitle)
+        !this.bookListNaver.some((book) => book.title === this.bookTitle)
       ) {
         this.searchError = true;
       } else {

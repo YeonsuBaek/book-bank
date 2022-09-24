@@ -11,7 +11,7 @@
           <div class="booklistHeader">
             <span class="bookNumber">No.</span>
             <span class="bookTitle">제목</span>
-            <span class="bookCategory">분야</span>
+            <span class="bookAuthor">분야</span>
             <span class="bookPrice">가격</span>
           </div>
 
@@ -35,7 +35,7 @@
                 </button>
               </span>
               <span class="bookTitle">{{ myBook.title }}</span>
-              <span class="bookCategory">{{ myBook.category }}</span>
+              <span class="bookAuthor">{{ myBook.author }}</span>
               <span class="bookPrice">{{ myBook.price }}</span>
             </li>
           </ul>
@@ -104,9 +104,7 @@ export default {
   computed: {
     sumBookPrice() {
       let totalPrice, currentPrice;
-
       totalPrice = "0";
-
       for (let i = 0; i < this.myBooks.length; i++) {
         totalPrice = Number(totalPrice.replace(",", ""));
         currentPrice = Number(this.myBooks[i].price.replace(",", ""));
@@ -115,9 +113,7 @@ export default {
           .toString()
           .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       }
-
       this.showDeleteButton();
-
       return totalPrice;
     },
   },
@@ -157,7 +153,7 @@ export default {
   display: none;
 }
 
-.bookCategory {
+.bookAuthor {
   width: 160px;
   text-align: center;
 }
