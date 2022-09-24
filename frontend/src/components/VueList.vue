@@ -11,7 +11,7 @@
           <div class="booklistHeader">
             <span class="bookNumber">No.</span>
             <span class="bookTitle">제목</span>
-            <span class="bookAuthor">분야</span>
+            <span class="bookAuthor">작가</span>
             <span class="bookPrice">가격</span>
           </div>
 

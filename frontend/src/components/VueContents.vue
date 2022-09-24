@@ -63,7 +63,7 @@ export default {
     },
 
     popSelectedBook(index) {
-      this.myBooks.value.splice(index, 1);
+      this.myBooks.splice(index, 1);
     },
   },
 };
