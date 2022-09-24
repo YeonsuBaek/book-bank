@@ -21,6 +21,7 @@ export default {};
   width: 100%;
   height: 60px;
   border-bottom: 1px solid #d7dde3;
+  background-color: #fff;
 }
 
 .title {
