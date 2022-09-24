@@ -18,10 +18,10 @@
           <ul class="booklistList">
             <li
               class="booklistItem"
-              v-for="myBook in myBooks"
+              v-for="(myBook, index) in myBooks"
               :key="myBook.index"
             >
-              <span class="bookNumber">1</span>
+              <span class="bookNumber">{{ index + 1 }}</span>
               <span class="bookTitle">{{ myBook.title }}</span>
               <span class="bookCategory">{{ myBook.category }}</span>
               <span class="bookPrice">{{ myBook.price }}</span>
