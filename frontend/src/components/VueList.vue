@@ -5,7 +5,7 @@
         <div class="col-8">
           <div class="subTitle">
             <h2>이만큼 읽었어요!</h2>
-            <strong>100,000원</strong>
+            <strong>{{ sumBookPrice }}원</strong>
           </div>
 
           <div class="booklistHeader">
@@ -37,6 +37,31 @@
 export default {
   props: {
     myBooks: Array,
+  },
+
+  data() {
+    return {
+      totalPrice: 0,
+    };
+  },
+
+  computed: {
+    sumBookPrice() {
+      let totalPrice, currentPrice;
+
+      totalPrice = "0";
+
+      for (let i = 0; i < this.myBooks.length; i++) {
+        totalPrice = Number(totalPrice.replace(",", ""));
+        currentPrice = Number(this.myBooks[i].price.replace(",", ""));
+        totalPrice += currentPrice;
+        totalPrice = totalPrice
+          .toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+
+      return totalPrice;
+    },
   },
 };
 </script>
